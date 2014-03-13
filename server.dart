@@ -12,6 +12,11 @@ void main() {
   if(environment == 'development') {
     staticFiles.jailRoot = false;
   }
+  staticFiles.allowDirectoryListing = true;
+  staticFiles.directoryHandler = (dir, request) {
+    var indexUri = new Uri.file(dir.path).resolve('index.html');
+    staticFiles.serveFile(new File(indexUri.toFilePath()), request);
+  };
 
   var portEnv = Platform.environment['PORT'];
   var port = portEnv == null ? 9999 : int.parse(portEnv);
