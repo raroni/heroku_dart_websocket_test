@@ -1,0 +1,6 @@
+name: heroku_test
+description: A sample deployment
+dependencies:
+  browser: any
+  http_server: any
+  path: any
